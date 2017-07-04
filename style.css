@@ -4,8 +4,8 @@
 }
 
 @font-face {
-    font-family: 'cyber scrape';
-    src: url('Assets/BLADRMF_.ttf');
+    font-family: 'cyber-scrape';
+    src: url('Assets/BLADRMF_.TTF');
 }
 
 body {
@@ -49,7 +49,7 @@ h1 {
     text-shadow: 0 0 8px #f11d46, 0 0 40px #f11d46;
     letter-spacing: 13px;
     color: #e697a6;
-    font-family: 'cyber scrape';
+    font-family: 'cyber-scrape';
     font-size: 64px;
 }
 
