@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cyber Scrape</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <style type="text/css">
+        body {
+            background-color: #00031f;
+            font-family: 'Share Tech Mono', 'Orbitron', monospace;
+        }
+
+        * { box-sizing: border-box; }
+
+/* force scrollbar */
+html { overflow-y: scroll; }
+
+
+/* ---- isotope ---- */
+
+.grid {
+  background: #00031f;
+  margin-top: 150px;
+}
+
+/* clear fix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.grid-sizer,
+.grid-item {
+  width: 33.333%;
+}
+
+.grid-item {
+  float: left;
+}
+
+.navigation {
+    margin-top: 30px;
+}
+
+.grid-item img {
+  display: block;
+  max-width: 100%;
+}
+
+.saved {
+    font-size: 20px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+    padding: 10px 30px;
+    border: 2px solid;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: .4s linear;
+}
+
+.saved:hover {
+    padding: 20px 40px;
+    color: #4bb1d9;
+    text-decoration: none;
+    animation: animate-link 1s infinite linear;
+}
+
+.home {
+    font-size: 20px;
+    margin-left: 25px;
+    margin-bottom: 30px;
+    padding: 10px 30px;
+    border: 2px solid;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: .4s linear;
+}
+
+.home:hover {
+    padding: 20px 40px;
+    color: #4bb1d9;
+    text-decoration: none;
+    animation: animate-link 1s infinite linear;
+}
+
+
+ul {
+    margin-top: 50px;
+    display: flex;
+    font-size: 96px;
+    list-style: none;
+    justify-content: center;
+}
+
+ul li {
+    list-style: none;
+    letter-spacing: 10px;
+    animation: animate 1.4s linear infinite;
+    color: #252951;
+    font-weight: 600;
+}
+
+@keyframes animate {
+    0% {
+        color: #252951;
+        text-shadow: none;
+    }
+
+    75% {
+        color: #252951;
+        text-shadow: none;
+    }
+
+    100% {
+        color: #f11d46;
+        text-shadow: 0 0 7px #f11d46, 0 0 50px #f11d46;
+    }
+}
+
+ul li:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+ul li:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+ul li:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+ul li:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+ul li:nth-child(5) {
+    animation-delay: 1s;
+}
+
+ul li:nth-child(6) {
+    animation-delay: 1.2s;
+}
+
+ul li:nth-child(7) {
+    animation-delay: 1.4s;
+}
+
+@keyframes animate-blue {
+    0% {
+        color: #f11d46;
+        text-shadow: none;
+    }
+    18% {
+        color: #f11d46;
+        text-shadow: none;
+    }
+    20% {
+        color: #f11d46;
+        text-shadow: 0 0 7px #f11d46, 0 0 20px #f11d46;
+    }
+    30% {
+        color: #f11d46;
+        text-shadow: none;
+    }
+    35% {
+        color: #f11d46;
+        text-shadow: 0 0 7px #f11d46, 0 0 20px #f11d46;
+    }
+    70% {
+        color: #f11d46;
+        text-shadow: none;
+    }
+    85% {
+        color: #f11d46;
+        text-shadow: 0 0 7px #f11d46, 0 0 20px #f11d46;
+    }
+    90% {
+        color: #f11d46;
+        text-shadow: none;
+    }
+    100% {
+        color: #f11d46;
+        text-shadow: none;
+    }
+}
+
+
+@keyframes animate-link {
+    0% {
+        color: #337ab7;
+        text-shadow: none;
+    }
+    18% {
+        color: #337ab7;
+        text-shadow: none;
+    }
+    20% {
+        color: #4bb1d9;
+        text-shadow: 0 0 7px #4bb1d9, 0 0 20px #4bb1d9;
+    }
+    30% {
+        color: #337ab7;
+        text-shadow: none;
+    }
+    35% {
+        color: #4bb1d9;
+        text-shadow: 0 0 7px #4bb1d9, 0 0 20px #4bb1d9;
+    }
+    70% {
+        color: #337ab7;
+        text-shadow: none;
+    }
+}
+
+ol {
+    margin-top: 20px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    color: #f11d46;
+}
+
+ol a {
+   color: #f11d46;
+}
+
+ol li {
+    align-items: center;
+    margin: 15px;
+    font-size: 64px;
+    animation: animate-blue 2s linear infinite;
+    font-weight: 600;
+}
+
+img {
+    transition: 0.5s ease;
+}
+
+img:hover {
+    opacity: 0.5
+}
+
+.modal{
+  background-color: rgba(0,0,0,0);
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+}
+
+.modal-content{
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+#caption{
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+#caption{
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+.close{
+  position: absolute;
+  z-index: 3
+  top: 15px;
+  right: 35px;
+  color: #f11d46;
+  text-shadow: 0 0 8px #f11d46, 0 0 40px #f11d46;
+  font-size: 60px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.close:hover,
+.close:focus{
+  color: #f11d46;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#imgModal {
+    background-color: rgba(0,0,0, 0);
+}
+
+.image-placer {
+    background-color: rgba(0,0,0, 0);
+}
+
+#caption p {
+    font-size: 44px;
+    color: #f11d46;
+    text-shadow: 0 0 8px #f11d46, 0 0 40px #f11d46;
+}
+
+.fa {
+    font-size: 40px;
+    color: #f11d46;
+  text-shadow: 0 0 8px #f11d46, 0 0 40px #f11d46;
+  margin-left: 25px;
+}
+
+.closing-text {
+    font-size: 18px;
+    margin-right: 15px;
+}
+
+/* 100% Image Width on Smaller Screens*/
+@media only screen and (max-width: 700px){
+  .modal-content{
+    width: 95%;
+  }
+}
+
+/*.image-placer {
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 7px;
+    background-color: #00031f;
+    box-shadow: 0 0 7px #f11d46, 0 0 20px #f11d46;
+    visibility: hidden;
+}
+
+.new-text {
+    display: flex;
+    flex-direction: column;
+    color: #f11d46;
+    font-size: 40px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 25%;
+}
+
+.image-download {
+    display: flex;
+    justify-content: center;
+    margin-left: 13%;
+}
+
+.exit {
+    font-size: 32px;
+    margin-left: 7px;
+    z-index: 500;
+}
+
+.exit:hover {
+    cursor: pointer;
+}
+
+.back {
+    background-color: blue;
+    position: absolute;
+    transform: rotateY(180deg);
+}*/
+
+.flipped {
+    transform: rotateY(180deg);
+}
+
+@media screen and (max-width: 768px) {
+    ul {
+        font-size: 42px;
+    }
+
+    .number-pages li {
+        font-size: 30px;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+/*    .image-placer {
+        padding: 20px;
+    }
+
+    .image-download {
+        margin-left: -3%;
+    }
+
+    .image-placer img {
+        max-width: 280px;
+        max-height: 285px;
+    }
+
+    .new-text {
+        font-size: 24px;
+        margin-left: -7%;
+    }*/
+}
+    </style>
+
+</head>
+
+<body>
+    {{{body}}}
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    <script type="text/javascript">
+    setTimeout(function() {
+                var $grid = $('.grid').isotope({
+            itemSelector: '.grid-item',
+            percentPosition: true,
+            masonry: {
+            columnWidth: '.grid-sizer'
+        }
+        });
+// layout Isotope after each image loads
+$grid.imagesLoaded().progress( function() {
+  $grid.isotope('layout');
+}); 
+    }, 500);
+
+      $("img").click(function() {
+        $(this).toggleClass("flipped")
+    });
+
+    $("img").click(function() {
+            var bing = $(this).attr("src");
+            var brandDownload = $('<a class="image-download" download="cyber-image"></a>');
+            brandDownload.attr('href', bing);
+            brandDownload.appendTo('.image-placer');
+            var brandImg = $('<img id="img01" class="modal-content">');
+            brandImg.attr('src', bing);
+            brandImg.appendTo('.image-download');
+            $("#imgModal").css("display", "block");
+            $("#caption").css("display", "block");
+            $("img").hover().css("opacity", "1");
+            // var brandText = $('<p class="text-center new-text">Click to download</p>');
+            // brandText.appendTo(".image-placer");
+            $(".grid").css("opacity", "0.25");
+            $("ol").css("visibility", "hidden");
+    });
+
+         $(".closing-text, .close").click(function() {
+            $("#imgModal").css("display", "none");
+            $(".image-placer").empty();
+            $(".grid").css("opacity", "1");
+            $("ol").css("visibility", "visible");
+         });
+
+    var modal = document.getElementById("imgModal");
+    var span = document.getElementsByClassName("close")[0];
+
+    span.onclick = function() { 
+    modal.style.display = "none";
+}
+
+       // var modalContent = $('<div id="imgModal" class="modal">');
+       //      var close = $('<span class="close">x</span>');
+       //      var placer = $('<div class="image-placer"></div>');
+       //      var text = $('<div id="caption"><p>Click to download</p></div>');
+       //      close.appendTo(modalContent);
+       //      placer.appendTo(modalContent);
+       //      text.appendTo(modalContent);
+
+    // $(".exit").click(function() {
+    //     $(".image-placer").empty();
+    //     $(".image-placer").css('visibility', "hidden");
+    //     $(".grid").css("opacity", "1");
+    // })
+
+    // $(".grid").click(function() {
+    //     $(".image-placer").empty();
+    //     $(".image-placer").css('visibility', "hidden");
+    //     $(".grid").css("opacity", "1");
+    // })
+    </script>
+</body>
+
+</html>

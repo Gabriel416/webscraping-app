@@ -1,0 +1,42 @@
+<div class="navigation">
+	 <a class="home" href="http://localhost:6500/"><span>HOME</span></a>
+</div>
+<ul class="text-center" id="mobile-spec">
+	<li>R</li>
+	<li>E</li>
+	<li>S</li>
+	<li>U</li>
+	<li>L</li>
+	<li>T</li>
+	<li>S</li>
+</ul>
+<div class="grid">
+{{#each images}}
+  <div class="grid-sizer"></div>
+  	<div class="grid-item">
+  	<div class="front">
+  		<img class="loaded-image" src="{{source}}" />
+  	</div>
+  	<div class="back">
+  		
+  	</div>
+  	</div>
+{{/each}}
+</div>
+ 
+ <ol class="number-pages text-center">
+ 	<li><a href="http://localhost:6500/results">1</a></li>
+ 	<li><a href="http://localhost:6500/results2">2</a></li>
+ 	<li><a href="http://localhost:6500/results3">3</a></li>
+ 	<li><a href="http://localhost:6500/results4">4</a></li>
+ 	<li><a href="http://localhost:6500/results5">5</a></li>
+ </ol>
+
+<div id="imgModal" class="modal">
+  <span class="close">X</span>
+  <div class="image-placer">
+  </div>
+  <div id="caption"><p>Click to download.</p><p class="closing-text">close<span><i class="fa fa-times" aria-hidden="true"></i></span></p></div>
+</div>  
+ 
+
