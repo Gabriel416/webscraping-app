@@ -51,7 +51,7 @@ app.get("/results", function(req, res) {
             $(".post_media img").each(function(i, element) {
                 var image = $(this).attr("src");
                 collection.push(image);
-                // console.log(collection);
+                console.log(collection);
 
                 var newImage = images({
                     source: image
@@ -70,7 +70,7 @@ app.get("/results", function(req, res) {
                         console.log("mongoose error: " + err);
                     }
                     var conclusion = images;
-                    // console.log(conclusion);
+                    console.log(conclusion);
                     res.render("results", { images: images });
                     return;
                 });
