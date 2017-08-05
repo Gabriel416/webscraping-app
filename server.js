@@ -24,281 +24,281 @@ var db = process.env.MONGODB_URI || "mongodb://localhost/cyberMongo";
 
 // Connect mongoose to our database
 mongoose.connect(db, function(error) {
-    // Log any errors connecting with mongoose
-    if (error) {
-        console.log(error);
-    }
-    // Or log a success message
-    else {
-        console.log("mongoose connection is successful");
-    }
+  // Log any errors connecting with mongoose
+  if (error) {
+    console.log(error);
+  }
+  // Or log a success message
+  else {
+    console.log("mongoose connection is successful");
+  }
 });
 
 var testImage = images({
-    source: 'image'
+  source: 'image'
 });
 
 testImage.save();
 
 app.get("/", function(req, res) {
-    res.sendFile(__dirname + "/views/index.html");
+  res.sendFile(__dirname + "/views/index.html");
 });
 
 app.get("/results", function(req, res) {
-    var collection = [];
-    var heading = [];
+  var collection = [];
+  var heading = [];
 
-    request('https://www.tumblr.com/search/cyberpunk+city', function(error, response, html) {
-        if (error) {
-            console.log(error);
-        } else {
-            var $ = cheerio.load(html);
-            var promises = []
-            $(".post_media img").each(function(i, element) {
-                var image = $(this).attr("src");
-                collection.push(image);
-                // console.log(collection);
+  request('https://www.tumblr.com/search/cyberpunk+city', function(error, response, html) {
+    if (error) {
+      console.log(error);
+    } else {
+      var $ = cheerio.load(html);
+      var promises = []
+      $(".post_media img").each(function(i, element) {
+        var image = $(this).attr("src");
+        collection.push(image);
+        // console.log(collection);
 
-                var newImage = images({
-                    source: image
-                });
+        var newImage = images({
+          source: image
+        });
 
-                var savePromise = newImage.save(function(err) {
-                    if (err) {
-                        console.log("mongoose error: " + err);
-                    }
-                });
-                promises.push(savePromise);
-            });
-            Promise.all(promises).then(function() {
-                images.find({}, function(err, images) {
-                    if (err) {
-                        console.log("mongoose error: " + err);
-                    }
-                    var conclusion = images;
-                    console.log(conclusion);
-                    res.render("results", { images: images });
-                    return;
-                });
-            });
+        var savePromise = newImage.save(function(err) {
+          if (err) {
+            console.log("mongoose error: " + err);
+          }
+        });
+        promises.push(savePromise);
+      });
+      Promise.all(promises).then(function() {
+        images.find({}, function(err, images) {
+          if (err) {
+            console.log("mongoose error: " + err);
+          }
+          var conclusion = images;
+          console.log(conclusion);
+          res.render("results", { images: images });
+          return;
+        });
+      });
 
-            Promise.all(promises).then(function() {
-                images.remove({}, function(err, images) {
-                    if (err) {
-                        console.log(err);
-                    }
-                });
-            });
+      Promise.all(promises).then(function() {
+        images.remove({}, function(err, images) {
+          if (err) {
+            console.log(err);
+          }
+        });
+      });
 
-        }
-    });
+    }
+  });
 });
 
 app.get("/results2", function(req, res) {
-    var collection = [];
-    var heading = [];
+  var collection = [];
+  var heading = [];
 
-    request('https://www.tumblr.com/search/cyberpunk', function(error, response, html) {
-        if (error) {
-            console.log(error);
-        } else {
-            var $ = cheerio.load(html);
-            var promises = []
-            $(".post_media img").each(function(i, element) {
-                var image = $(this).attr("src");
-                collection.push(image);
-                // console.log(collection);
+  request('https://www.tumblr.com/search/cyberpunk', function(error, response, html) {
+    if (error) {
+      console.log(error);
+    } else {
+      var $ = cheerio.load(html);
+      var promises = []
+      $(".post_media img").each(function(i, element) {
+        var image = $(this).attr("src");
+        collection.push(image);
+        // console.log(collection);
 
-                var newImage = images({
-                    source: image
-                });
+        var newImage = images({
+          source: image
+        });
 
-                var savePromise = newImage.save(function(err) {
-                    if (err) {
-                        console.log("mongoose error: " + err);
-                    }
-                });
-                promises.push(savePromise);
-            });
-            Promise.all(promises).then(function() {
-                images.find({}, function(err, images) {
-                    if (err) {
-                        console.log("mongoose error: " + err);
-                    }
-                    var conclusion = images;
-                    // console.log(conclusion);
-                    res.render("results", { images: images });
-                    return;
-                });
-            });
+        var savePromise = newImage.save(function(err) {
+          if (err) {
+            console.log("mongoose error: " + err);
+          }
+        });
+        promises.push(savePromise);
+      });
+      Promise.all(promises).then(function() {
+        images.find({}, function(err, images) {
+          if (err) {
+            console.log("mongoose error: " + err);
+          }
+          var conclusion = images;
+          // console.log(conclusion);
+          res.render("results", { images: images });
+          return;
+        });
+      });
 
-            Promise.all(promises).then(function() {
-                images.remove({}, function(err, images) {
-                    if (err) {
-                        console.log(err);
-                    }
-                });
-            });
+      Promise.all(promises).then(function() {
+        images.remove({}, function(err, images) {
+          if (err) {
+            console.log(err);
+          }
+        });
+      });
 
-        }
-    });
+    }
+  });
 });
 
 app.get("/results3", function(req, res) {
-    var collection = [];
-    var heading = [];
+  var collection = [];
+  var heading = [];
 
-    request('https://www.tumblr.com/search/cyber+punk+art', function(error, response, html) {
-        if (error) {
-            console.log(error);
-        } else {
-            var $ = cheerio.load(html);
-            var promises = []
-            $(".post_media img").each(function(i, element) {
-                var image = $(this).attr("src");
-                collection.push(image);
-                // console.log(collection);
+  request('https://www.tumblr.com/search/cyber+punk+art', function(error, response, html) {
+    if (error) {
+      console.log(error);
+    } else {
+      var $ = cheerio.load(html);
+      var promises = []
+      $(".post_media img").each(function(i, element) {
+        var image = $(this).attr("src");
+        collection.push(image);
+        // console.log(collection);
 
-                var newImage = images({
-                    source: image
-                });
+        var newImage = images({
+          source: image
+        });
 
-                var savePromise = newImage.save(function(err) {
-                    if (err) {
-                        console.log("mongoose error: " + err);
-                    }
-                });
-                promises.push(savePromise);
-            });
-            Promise.all(promises).then(function() {
-                images.find({}, function(err, images) {
-                    if (err) {
-                        console.log("mongoose error: " + err);
-                    }
-                    var conclusion = images;
-                    // console.log(conclusion);
-                    res.render("results", { images: images });
-                    return;
-                });
-            });
+        var savePromise = newImage.save(function(err) {
+          if (err) {
+            console.log("mongoose error: " + err);
+          }
+        });
+        promises.push(savePromise);
+      });
+      Promise.all(promises).then(function() {
+        images.find({}, function(err, images) {
+          if (err) {
+            console.log("mongoose error: " + err);
+          }
+          var conclusion = images;
+          // console.log(conclusion);
+          res.render("results", { images: images });
+          return;
+        });
+      });
 
-            Promise.all(promises).then(function() {
-                images.remove({}, function(err, images) {
-                    if (err) {
-                        console.log(err);
-                    }
-                });
-            });
+      Promise.all(promises).then(function() {
+        images.remove({}, function(err, images) {
+          if (err) {
+            console.log(err);
+          }
+        });
+      });
 
-        }
-    });
+    }
+  });
 });
 
 app.get("/results4", function(req, res) {
-    var collection = [];
-    var heading = [];
+  var collection = [];
+  var heading = [];
 
-    request('https://cyberpunk-city.tumblr.com/', function(error, response, html) {
-        if (error) {
-            console.log(error);
-        } else {
-            var $ = cheerio.load(html);
-            var promises = []
-            $(".main img").each(function(i, element) {
-                var image = $(this).attr("src");
-                collection.push(image);
-                // console.log(collection);
+  request('https://cyberpunk-city.tumblr.com/', function(error, response, html) {
+    if (error) {
+      console.log(error);
+    } else {
+      var $ = cheerio.load(html);
+      var promises = []
+      $(".main img").each(function(i, element) {
+        var image = $(this).attr("src");
+        collection.push(image);
+        // console.log(collection);
 
-                var newImage = images({
-                    source: image
-                });
+        var newImage = images({
+          source: image
+        });
 
-                var savePromise = newImage.save(function(err) {
-                    if (err) {
-                        console.log("mongoose error: " + err);
-                    }
-                });
-                promises.push(savePromise);
-            });
-            Promise.all(promises).then(function() {
-                images.find({}, function(err, images) {
-                    if (err) {
-                        console.log("mongoose error: " + err);
-                    }
-                    var conclusion = images;
-                    // console.log(conclusion);
-                    res.render("results", { images: images });
-                    return;
-                });
-            });
+        var savePromise = newImage.save(function(err) {
+          if (err) {
+            console.log("mongoose error: " + err);
+          }
+        });
+        promises.push(savePromise);
+      });
+      Promise.all(promises).then(function() {
+        images.find({}, function(err, images) {
+          if (err) {
+            console.log("mongoose error: " + err);
+          }
+          var conclusion = images;
+          // console.log(conclusion);
+          res.render("results", { images: images });
+          return;
+        });
+      });
 
-            Promise.all(promises).then(function() {
-                images.remove({}, function(err, images) {
-                    if (err) {
-                        console.log(err);
-                    }
-                });
-            });
+      Promise.all(promises).then(function() {
+        images.remove({}, function(err, images) {
+          if (err) {
+            console.log(err);
+          }
+        });
+      });
 
-        }
-    });
+    }
+  });
 });
 
 app.get("/results5", function(req, res) {
-    var collection = [];
-    var heading = [];
+  var collection = [];
+  var heading = [];
 
-    request('https://xivles.tumblr.com/', function(error, response, html) {
-        if (error) {
-            console.log(error);
-        } else {
-            var $ = cheerio.load(html);
-            var promises = []
-            $(".posts-grid img").each(function(i, element) {
-                var image = $(this).attr("src");
-                collection.push(image);
-                // console.log(collection);
+  request('https://xivles.tumblr.com/', function(error, response, html) {
+    if (error) {
+      console.log(error);
+    } else {
+      var $ = cheerio.load(html);
+      var promises = []
+      $(".posts-grid img").each(function(i, element) {
+        var image = $(this).attr("src");
+        collection.push(image);
+        // console.log(collection);
 
-                var newImage = images({
-                    source: image
-                });
+        var newImage = images({
+          source: image
+        });
 
-                var savePromise = newImage.save(function(err) {
-                    if (err) {
-                        console.log("mongoose error: " + err);
-                    }
-                });
-                promises.push(savePromise);
-            });
-            Promise.all(promises).then(function() {
-                images.find({}, function(err, images) {
-                    if (err) {
-                        console.log("mongoose error: " + err);
-                    }
-                    var conclusion = images;
-                    images.remove({}, function(err, images) {
-                    if (err) {
-                        console.log(err);
-                    }
-                });
-                    // console.log(conclusion);
-                    res.render("results", { images: images });
-                    return;
-                });
-            });
+        var savePromise = newImage.save(function(err) {
+          if (err) {
+            console.log("mongoose error: " + err);
+          }
+        });
+        promises.push(savePromise);
+      });
+      Promise.all(promises).then(function() {
+        images.find({}, function(err, imgs) {
+          if (err) {
+            console.log("mongoose error: " + err);
+          }
+          var conclusion = imgs;
+          images.remove({}, function(err, imgs) {
+            if (err) {
+              console.log(err);
+            }
+          });
+          // console.log(conclusion);
+          res.render("results", { images: imgs });
+          return;
+        });
+      });
 
-            // Promise.all(promises).then(function() {
-            //     images.remove({}, function(err, images) {
-            //         if (err) {
-            //             console.log(err);
-            //         }
-            //     });
-            // });
+      // Promise.all(promises).then(function() {
+      //     images.remove({}, function(err, images) {
+      //         if (err) {
+      //             console.log(err);
+      //         }
+      //     });
+      // });
 
-        }
-    });
+    }
+  });
 });
 
 app.listen(PORT, function() {
-    console.log("Listening on ", PORT);
+  console.log("Listening on ", PORT);
 });
