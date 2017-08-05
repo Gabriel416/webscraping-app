@@ -34,6 +34,12 @@ mongoose.connect(db, function(error) {
     }
 });
 
+var testImage = images({
+    source: 'image'
+});
+
+testImage.save();
+
 app.get("/", function(req, res) {
     res.sendFile(__dirname + "/views/index.html");
 });
@@ -51,7 +57,7 @@ app.get("/results", function(req, res) {
             $(".post_media img").each(function(i, element) {
                 var image = $(this).attr("src");
                 collection.push(image);
-                console.log(collection);
+                // console.log(collection);
 
                 var newImage = images({
                     source: image

@@ -435,14 +435,21 @@ img:hover {
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
     <script type="text/javascript">
 
-            var $grid = $('.grid').isotope({
+        //     var $grid = $('.grid').isotope({
+        //     itemSelector: '.grid-item',
+        //     percentPosition: true,
+        //     masonry: {
+        //     columnWidth: '.grid-sizer'
+        // }
+        // });
+             setTimeout(function() {
+                    var $grid = $('.grid').isotope({
             itemSelector: '.grid-item',
             percentPosition: true,
             masonry: {
             columnWidth: '.grid-sizer'
         }
         });
-             setTimeout(function() {
         // layout Isotope after each image loads
         $grid.imagesLoaded().progress( function() {
         $grid.isotope('layout');
