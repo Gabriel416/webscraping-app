@@ -276,19 +276,24 @@ app.get("/results5", function(req, res) {
                         console.log("mongoose error: " + err);
                     }
                     var conclusion = images;
+                    images.remove({}, function(err, images) {
+                    if (err) {
+                        console.log(err);
+                    }
+                });
                     // console.log(conclusion);
                     res.render("results", { images: images });
                     return;
                 });
             });
 
-            Promise.all(promises).then(function() {
-                images.remove({}, function(err, images) {
-                    if (err) {
-                        console.log(err);
-                    }
-                });
-            });
+            // Promise.all(promises).then(function() {
+            //     images.remove({}, function(err, images) {
+            //         if (err) {
+            //             console.log(err);
+            //         }
+            //     });
+            // });
 
         }
     });
